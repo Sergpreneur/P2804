@@ -1,0 +1,14 @@
+{
+  "status": "VERIFIED",
+  "vertices": 4824,
+  "edges": 15120,
+  "landmarks": 13,
+  "tree_entries": 62712,
+  "exact_adjacency_csv_equality": true,
+  "packing_divisors_verified": true,
+  "exact_dihedral_actions_census_equality": true,
+  "exact_witness_potential_equality": true,
+  "fixed_graph_source_sha256": "d02a0018631230beff618c262713e6420c37b7ded19640d56f007f0f32d1918e",
+  "seconds": 2.0161425219999956,
+  "scope": "Independent byte/table binding; geometric identification remains the paper and independent Python checker"
+}

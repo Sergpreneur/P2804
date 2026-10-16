@@ -1,0 +1,49 @@
+Evaluating Commandline Options ...
+--nosymmetries       : ignoring symmetries activated
+ -v                  : verbose output activated
+... done.
+
+------------------------------------------------------------
+------------------ topcom VERSION 1.1.2 --------------------
+Triangulations of Point Configurations and Oriented Matroids
+--------------------- by Joerg Rambau ----------------------
+------------------------------------------------------------
+
+       -- using STL containers for hash tables --
+       -- using STL containers for symmetries  --
+       --    using STL containers for flips    --
+       -- using STL containers for chirotopes  --
+
+read point configuration with 9 points in rank 5
+preprocessing chirotope with 126 signs ...
+
+126 signs in total.
+... done.
+computing closure of 0 symmetries with 0 symmetry generators ...
+... found 0 symmetries without identity.
+no valid symmetry generators found.
+preprocessing simplex table sorted lexicographically for all full-dimensional simplices up to rank 6 ...
+... done.
+computing circuits ...
+84 circuits in total.
+... done.
+computing admissibles ...
+126 valid simplices.
+... done.
+no preprocessing of simplex-index symmetries and switch tables ...
+computing positive cocircuits ...
+27 cocircuits in total.
+... done.
+computing facets ...
+... done.
+computing incidences ...
+... done.
+generating root node with some preprocessing of symmetries ...
+exploring all symmetry classes of triangulations by extension ...
+4925 partial triangulations visited in total.
+83 branching deadends.
+2290 early detected deadends.
+0 max iterations in coversimp tightening.
+357 symmetry classes --- 357 triangulations in total.
+357 symmetry classes of triangulations in total.
+... done.

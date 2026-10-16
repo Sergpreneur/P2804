@@ -1,0 +1,17 @@
+{
+  "status": "VERIFIED",
+  "release_date": "2026-10-16",
+  "article_pages": 8,
+  "author": "Nefedov Sergey",
+  "affiliation": "Moscow State University, Mathematics Department",
+  "latex_warnings": [],
+  "visual_review": "All eight pages rendered and inspected",
+  "independent_numerical_check": "VERIFIED on release copy; 4824 vertices, 15120 edges, diameter 21",
+  "regression_tests": "7 passed on release copy",
+  "lean_source_integrity": "42 module source and compiler-log hashes match completed kernel run",
+  "lean_rebuilt_for_editorial_changes": false,
+  "lean_table_binding": "VERIFIED on release copy",
+  "github_workflows": "provided, not executed on GitHub",
+  "repository_url": null,
+  "publication_priority": "unestablished"
+}

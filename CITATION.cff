@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying preprint when using these results or certificates."
+type: software
+title: "The diameter of the triangulation flip graph of C(10,4)"
+authors:
+  - family-names: Nefedov
+    given-names: Sergey
+    affiliation: "Moscow State University, Mathematics Department"
+version: "1.0.0"
+date-released: "2026-10-16"
+abstract: "Exact computation of the full labelled undirected flip graph of C(10,4): 4824 vertices, 15120 edges, diameter 21, radius 15. Includes exact numerical reconstruction and a Lean 4.24.0 certificate for the explicit finite graph."
+keywords:
+  - cyclic polytope
+  - triangulation
+  - bistellar flip
+  - graph diameter
+  - Lean 4

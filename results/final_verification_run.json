@@ -1,0 +1,43 @@
+{
+  "status": "VERIFIED",
+  "runs": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "seconds": 0.22639321299993753,
+      "log": "results/tests.log",
+      "log_sha256": "ee1aac1f2c5278ca3fdf970c721ffd49cd5aba7d9d793a5e2651dc04377a8af3"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "verify/independent_check.py",
+        "9"
+      ],
+      "returncode": 0,
+      "seconds": 0.18308909600000334,
+      "log": "results/c9_independent_check.log",
+      "log_sha256": "313cda327503aa21e28dfcb36e49b3ed3728b24deffc0e545ab4543c882c4f97"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "verify/independent_check.py"
+      ],
+      "returncode": 0,
+      "seconds": 27.27253612000004,
+      "log": "results/independent_check.log",
+      "log_sha256": "237fa30dfcba930258cfb951c64b92c5ccd64842172b5ae592df6283431df030"
+    }
+  ],
+  "child_peak_rss_kib_linux": 74256,
+  "independent_checker_sha256": "8905db079cc8b38027d3ee209294dd011fef101993fd532d33c385c6144c609b"
+}

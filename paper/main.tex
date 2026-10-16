@@ -1,0 +1,400 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,longtable,array}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The diameter of the triangulation flip graph of C(10,4)},pdfauthor={Nefedov Sergey}}
+\emergencystretch=2em
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\diam}{\operatorname{diam}}
+\title{The diameter of the triangulation flip graph of $C(10,4)$}
+\author{Nefedov Sergey\\
+\small Moscow State University, Mathematics Department}
+\date{16 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We determine the diameter of the full labelled, undirected bistellar flip graph
+of the ten integer moment-curve points in dimension four. The graph has 4,824
+vertices and 15,120 edges, is connected, and has diameter 21 and radius 15.
+Exactly seven unordered pairs attain the diameter; they form two orbits of
+sizes two and five under the dihedral action on the vertex labels. We give a
+computer-assisted proof based on exact complete enumeration, all-source
+breadth-first search, and a checkable 21-flip path with a matching lower-bound
+potential. A standalone verifier reconstructs the geometry, census, graph and
+distances without importing the main implementation. Executed comparisons with
+TOPCOM and previously published graph-generation code give identical objects.
+A Lean 4 proof additionally certifies diameter 21 for the explicit finite graph. Its identification with the geometric flip graph is justified by the exact enumeration arguments and independent data checks. The accompanying source and data allow the certificates to be reproduced.
+\end{abstract}
+\noindent\textbf{Keywords:} cyclic polytope; triangulation; bistellar flip;
+graph diameter; exact enumeration; computational certificate.
+
+\section{Introduction and Related Work}
+The flip distance between two triangulations is the least number of bistellar
+flips transforming one into the other. Determining the largest such distance
+is a natural finite question even for a small cyclic polytope. We study the
+complete graph for ten points on the integer moment curve in dimension four,
+retaining labels and including nonregular triangulations.
+
+The triangulation count is already known: Rambau's enumeration tables list
+357 triangulations for $C(9,4)$ and 4,824 for $C(10,4)$
+\cite[Table 7]{rambau2026}; see also the enumeration work of Joswig and
+Kastner \cite{joswig}. Connectivity is also known from the theory of
+triangulations of cyclic polytopes \cite{rambau1997}. The survey of Rambau and
+Reiner \cite[Theorem 6.5 and Corollary 6.9]{survey} gives connectivity and
+bounds that specialize to $15\leq\diam G\leq30$ in this case.
+
+Our contribution is an explicit, reproducible determination of the exact
+value 21, together with the radius, all diametral pairs, their dihedral
+orbits, and independently checkable finite certificates. The computation was
+motivated by TheoremDB problem P2804 \cite{theoremdb}. A bounded literature
+search did not locate a prior statement of this exact diameter; this does not
+establish priority. In particular, Williams's publicly available code
+\cite{williamscode} has made this graph computable since 2020. We therefore
+make no claim to a new enumeration count, a new connectivity theorem, or a
+general formula for flip-graph diameters. Williams's ICIAM 2023 talk
+\cite{williamsiciam} also explicitly announced discussion of diameters; its
+available abstract does not report the value for this instance.
+
+\section{Definitions and Exact Statement}
+Let $p_i=(i,i^2,i^3,i^4)$, $1\leq i\leq10$, and
+$P=\conv\{p_1,\ldots,p_{10}\}$. A triangulation is a face-to-face covering by
+4-simplices with vertices among these points. The simple undirected graph $G$
+joins triangulations that differ by one geometric bistellar flip, of cost one.
+It includes all labelled triangulations, without regularity restrictions or a
+quotient by symmetry. It is not the directed monotone-flip graph.
+
+\begin{theorem}[Exact finite computation]
+For the stated coordinates, $G$ has $4824$ vertices and $15120$ edges. It is
+connected, with diameter $21$ and radius $15$. There are exactly seven unordered
+diametral pairs, in two dihedral orbits of sizes two and five. In the canonical zero-based numbering of the supplied census
+they are
+\[
+\begin{split}
+&(529,4174),\ (639,3642),\ (1049,2825),\ (1162,3352),\\
+&(1639,2511),\ (1962,4013),\ (2206,4307).
+\end{split}
+\]
+\end{theorem}
+The theorem is certified by the executed algorithms and the correctness
+arguments below. The primary certificate uses exact integer arithmetic throughout. An optional
+SciPy distance comparison uses floating point with integrality checks. All triangulations have 21 maximal
+simplices in the enumerated census; that observation is not an enumeration
+assumption.
+
+\section{Exact Geometry}
+For increasing $a_1,\ldots,a_5$, the homogeneous determinant is
+\[
+\det(1,a_i,a_i^2,a_i^3,a_i^4)_{i=1}^{5}
+=\prod_{1\leq i<j\leq5}(a_j-a_i)>0.
+\]
+Thus any five points are affinely independent. A quartet $F$ supports a hull
+facet precisely when $\prod_{v\in F}(t-v)$ has the same sign at all remaining
+labels. This exact predicate gives 35 tetrahedral boundary facets. Coning the
+facets not containing vertex 1 to vertex 1 gives a pulling triangulation.
+The sum of its determinants is $2737152$, so
+$\operatorname{vol}_4(P)=2737152/24=114048$.
+
+Every circuit is a six-element set $C=\{s_1<\cdots<s_6\}$. Its affine
+dependence has coefficients proportional to
+\[
+\lambda_j=\frac{1}{\prod_{k\ne j}(s_j-s_k)}.
+\]
+The identities $\sum_j\lambda_j s_j^r=0$, $0\leq r\leq4$, follow by comparing
+the coefficient of degree five in Lagrange interpolation of $t^r$ on six
+nodes. The signs alternate, giving three positive and three negative
+coefficients. There are $\binom{10}{6}=210$ circuits.
+
+\begin{lemma}[Proper intersection criterion]
+Two distinct maximal simplices $A,B$ intersect exactly in their common face
+if and only if there is no signed circuit with $C^+\subseteq A$ and
+$C^-\subseteq B$, or the reverse containment.
+\end{lemma}
+\begin{proof}
+A forbidden signed circuit provides equal convex combinations on its two
+parts. The Radon point lies in both simplices and outside their common face:
+otherwise uniqueness of barycentric coordinates in an affinely independent
+simplex would force zero coefficients on vertices outside that face. Conversely,
+an intersection point outside the common face gives two convex representations.
+Cancel coefficients on common vertices to get a nonzero affine dependence with
+positive support in $A$ and negative support in $B$. The cone of dependencies with these coordinate-wise sign constraints is
+pointed and nonzero, so it has a nonzero extreme ray $x$. If the kernel on
+$\operatorname{supp}(x)$ had dimension greater than one, an independent kernel
+vector $y$ on the same support would make both $x+\varepsilon y$ and
+$x-\varepsilon y$ sign-compatible for sufficiently small $\varepsilon>0$.
+This contradicts extremality. A dependence on a proper subset of that support
+would also be independent of $x$, so none exists. Thus $x$ is a signed circuit
+with the required containments.
+\end{proof}
+
+This criterion verifies the full face-to-face condition, not just disjoint
+4-dimensional interiors. For a compatible collection of simplices in $P$,
+equality of the sum of their exact volumes with that of $P$ certifies coverage.
+Indeed their union is closed; any omitted point would have a relatively open
+neighborhood in $P$ of positive 4-volume, contradicting the equality.
+
+\section{Complete Enumeration}
+\subsection{Frontier Enumerator}
+The main algorithm starts with the 35 boundary tetrahedra as requirements.
+Adding a simplex toggles its five tetrahedral facets. For a compatible partial
+triangulation the remaining requirements are unfilled boundary facets and
+internal facets incident to exactly one selected simplex. Compatibility
+prevents three maximal simplices from sharing a tetrahedral facet: two would
+lie on the same side and overlap in their interiors.
+
+Select a required facet with the fewest currently available compatible
+simplices, with deterministic tie breaking, and branch over all such simplices.
+A zero candidate count prunes the branch. Accept a leaf only with no remaining
+requirements and exact total volume equal to $\operatorname{vol}_4(P)$.
+
+\begin{lemma}[Completeness and uniqueness]
+The frontier algorithm lists every triangulation exactly once.
+\end{lemma}
+\begin{proof}
+Fix any full triangulation $T$ extending a visited partial collection. An
+unfilled boundary facet belongs to exactly one simplex in $T$. An exposed
+internal facet already has one incident selected simplex and has exactly one
+other incident simplex in $T$. Thus whichever required facet the algorithm
+selects, exactly one branch is compatible with staying inside $T$. That branch
+cannot be pruned: its needed simplex remains available, and disjoint interiors
+prevent the partial volume from exceeding the hull volume. Iteration reaches
+$T$. Once requirements are empty and volume is full, no proper extension is
+possible. Deterministic facet selection makes the branch leading to any fixed
+$T$ unique. Soundness follows from proper intersections and exact coverage.
+\end{proof}
+
+The runs visit 2,109 search nodes for $C(9,4)$ and 28,774 for $C(10,4)$, finding
+357 and 4,824 triangulations, respectively.
+
+\subsection{Independent Enumeration and TOPCOM}
+The standalone checker imports no main implementation module. It obtains
+volumes, hull-facet signs and circuit coefficients by recursive Laplace
+determinants, instead of Vandermonde products, quartic signs and reciprocal
+products. It enumerates compatible subsets in increasing simplex-index order,
+pruning only if some required facet cannot be filled by any future simplex.
+Any full triangulation supplies such a future simplex at every one of its
+prefixes, so this pruning is complete. At leaves exact volumes certify coverage.
+This separate search visits 248,097 nodes for $C(10,4)$ and obtains exactly the
+same ordered simplex lists. For $C(9,4)$ it visits 14,869 nodes and finds 357.
+
+TOPCOM 1.1.2 was actually run in extension mode
+\texttt{points2alltriangs --nosymmetries -v}. The input has an empty symmetry
+list; no regularity filter is used. Its full outputs agree object for object
+with both enumerations after converting zero-based point labels to $1,\ldots,n$.
+The raw outputs and diagnostics are included. Matching a published count alone
+is not used as a completeness proof.
+
+\section{Construction of the Complete Flip Graph}
+For each circuit the two local triangulations are
+\[
+\mathcal T_+=\{C\setminus\{i\}:i\in C^+\},\qquad
+\mathcal T_-=\{C\setminus\{i\}:i\in C^-\}.
+\]
+Both contain three 4-simplices, tile $\conv C$, and have the same boundary.
+For example, shifting any nonnegative affine representation along the circuit
+dependence to either endpoint of its feasible interval produces these two
+decompositions. For every global triangulation and every circuit, both
+directions of replacement are tested. The target must occur in the completely
+enumerated, geometrically validated census; otherwise the run fails.
+
+Every accepted pair differs by one genuine local replacement on the same
+geometric support. Conversely every flip has one of the 210 circuit supports:
+general position excludes smaller circuits, and a full-dimensional circuit
+leaves no nonempty join link. Hence the edge list is complete. Symmetry of the
+directed tests, absence of loops and duplicate edges, and inverse replacements
+are checked. The result has 15,120 distinct undirected edges.
+
+As an additional check, extract each triangulation's 15 internal triangles.
+By the one-internal-simplex exchange characterization
+\cite[Theorems 1.2--1.3]{williams}, two such encodings are adjacent exactly when
+they share 14 triangles. An independent bucket construction gives precisely
+the same edge set. This extra characterization is not needed to justify the
+circuit replacement algorithm.
+
+\subsection{Previously Published Graph-Generation Code}
+As an additional implementation check we executed the function
+\texttt{even\_dict\_hst\_1(10,2)} from Williams's \texttt{hst-orders}
+repository \cite{williamscode}, pinned to commit\\
+{\small\texttt{278dd2ed9192def321d566bc9fd0779a46fc40a4}}.
+It constructs the upward-flip graph in an internal-triangle encoding.
+Forgetting orientations and converting encodings gives exactly the same
+4,824 vertices and 15,120 edges.
+
+Sage was unavailable: six required functions were extracted by Python's AST
+from the original file and executed with their bodies unchanged, using NumPy
+and \texttt{itertools}; the unused Sage \texttt{Poset} import was omitted.
+The original file, its GPL-3.0 license, its hash, and the wrapper are supplied.
+This is execution of previously authored functions, rather than a native Sage
+run or an external human review. SciPy's all-pairs unweighted shortest-path
+routine on the resulting undirected graph reproduced the complete distance
+matrix after checking that every entry is an integer between 0 and 21.
+
+\section{Connectivity and Exact Distances}
+Queue-based BFS finds one component and computes a full distance row from each
+of the 4,824 vertices. A second implementation uses bitset layers, with
+$L_{r+1}=(\bigcup_{u\in L_r}N(u))\setminus\bigcup_{j\leq r}L_j$.
+Induction proves that these layers consist exactly of vertices at distance $r$.
+Every eccentricity and the complete distance-matrix hash agree.
+
+\begin{center}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Eccentricity &15&16&17&18&19&20&21\\
+Number of vertices &10&50&140&410&1120&3080&14\\
+\bottomrule
+\end{tabular}
+\end{center}
+Thus the upper bound $\diam G\leq21$ holds for every pair, not just sampled
+sources. For the lower bound, \texttt{data/witness.json} contains an integer
+potential $h$ on all vertices with
+\[
+h(529)=0,\quad h(4174)=21,\quad |h(u)-h(v)|\leq1\quad\text{for every edge }uv.
+\]
+Every path between these endpoints has length at least 21. The supplied path
+\[
+\begin{split}
+529,&199,194,171,141,4,3,0,1,17,21,\\
+&25,26,47,364,1942,2313,2619,2630,3202,3251,4174
+\end{split}
+\]
+has exactly 21 edges. Each is annotated with the six circuit labels and the
+three removed and three inserted maximal simplices. This proves equality.
+There are $11,633,076$ unordered distinct vertex pairs, exactly seven of which
+have distance 21. The label permutations
+\[
+ i\longmapsto 1+\bigl(\varepsilon(i-1)+k\bmod10\bigr),
+ \qquad \varepsilon\in\{-1,1\},\quad k=0,\ldots,9,
+\]
+induce 20 distinct permutations of the census. We checked that each preserves
+the entire edge set and the set of diametral pairs. This is a graph action;
+we do not assert that these permutations are Euclidean isometries of the
+chosen coordinates. Its orbits on the diametral pairs are
+\[
+\begin{array}{cl}
+2 & (529,4174),\ (1162,3352),\\
+5 & (639,3642),\ (1049,2825),\ (1639,2511),\\
+  & (1962,4013),\ (2206,4307).
+\end{array}
+\]
+The finite action check is implemented in
+\texttt{tools/structural\_summary.py} and recorded in
+\texttt{results/structural\_summary.json}.
+
+\section{A Kernel-Checked Graph Certificate}
+We additionally formalized the diameter claim for the explicit finite graph
+in Lean 4.24.0 \cite{lean4}. The theorem
+\texttt{P2804.Fixed.graph\_diameter\_twenty\_one}
+proves that every ordered pair has a walk of at most 21 edges, and that some
+ordered pair has no walk shorter than 21. It uses only the standard library.
+All closed finite checks use \texttt{decide +kernel}; no admitted proof,
+custom axiom or native-computation axiom is used. The final axiom report and
+per-module compiler results are included in the supplement.
+
+The upper certificate uses 13 landmark trees. For each landmark $r$ an
+integer rank $q_r(v)$ and a parent are supplied, with $q_r(v)\leq b_r$ for
+every $v$, and
+\[
+v\ne r\ \Longrightarrow\
+\bigl(vp_r(v)\in E(G)\ \text{and}\ q_r(p_r(v))+1\leq q_r(v)\bigr).
+\]
+The first two conditions give a walk from $v$ to $r$ of length at most
+$q_r(v)$ by induction on the rank. The landmarks and bounds are
+\[
+\begin{array}{c|rrrrrrrrrrrrr}
+r&0&412&405&73&384&388&52&120&47&618&35&39&194\\
+b_r&15&19&20&20&20&19&20&19&20&20&20&20&19
+\end{array}
+\]
+The 20 supplied label actions are checked to preserve adjacency and to have
+the supplied inverses. For every $u$, a landmark $r$ and action $g$ satisfy
+\[
+q_r(g^{-1}u)+b_r\leq21.
+\]
+The paths $u\to gr\to v$ therefore have length at most 21 for every $v$.
+This construction checks 62,712 tree entries, rather than formalizing a BFS
+implementation. The same kernel checks also verify the potential inequalities
+on every edge and the endpoint values 0 and 21. The generic soundness proof is
+\texttt{landmark\_diameter\_certificate} in \texttt{lean/GraphCertificate.lean}.
+
+The formal theorem concerns the explicit relation \texttt{Fixed.Adj} on
+\texttt{Fin 4824}. An independent decoder reads the literal Lean tables and
+checks exact equality with every CSV neighbor, the label actions on the census,
+and the witness potential. The identification of that graph with the geometric
+flip graph relies on Sections 3--5 and the independently executed enumeration
+and flip construction. Convex geometry and enumeration completeness are not
+formalized in Lean. The radius, list of seven diametral pairs and their orbit
+sizes remain exact computational results checked outside Lean.
+
+\section{Certificates, Reproducibility and Limitations}
+Run \texttt{python3 verify/independent\_check.py} from the project root. It
+rebuilds exact geometry, independently re-enumerates the full census, rebuilds
+all flips, checks the internal-triangle graph, and recomputes all distances.
+It prints \texttt{VERIFIED} only after every check succeeds. Do not disable
+Python assertions with \texttt{-O} or \texttt{PYTHONOPTIMIZE}.
+The mathematical core uses only the Python standard library. Seven regression
+and negative tests also pass. TOPCOM is optional. The Williams comparison additionally requires NumPy and
+SciPy; ReportLab is needed only to regenerate the accompanying reports.
+The primary checker does not depend on these packages.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Check & Vertices & Edges & Diameter\\
+\midrule
+$C(5,4)$ & 1 & 0 & 0\\
+$C(6,4)$ & 2 & 1 & 1\\
+$C(7,4)$ & 7 & 7 & 3\\
+$C(8,4)$ & 40 & 64 & 7\\
+$C(9,4)$ & 357 & 825 & 13\\
+$C(10,4)$ & 4824 & 15120 & 21\\
+\bottomrule
+\end{tabular}
+\end{center}
+The smaller cases are regression checks, not evidence for a formula beyond
+the stated finite computations.
+
+Every triangulation uses sorted vertex labels and sorted maximal simplices;
+the full census is lexicographically sorted. Its index defines the graph ID.
+Individual hashes use compact ASCII JSON without a trailing newline.
+The distance matrix is hashed as row-major unsigned bytes, with distances
+$0,\ldots,21$ and 255 reserved for unreachable pairs. Its SHA-256 is
+\begin{center}\small\texttt{c384c92a7ef367f11d8f08a27f5e7c6bbcc0d7b98c674c9689dbc451fee22a13}.\end{center}
+File hashes are integrity aids; the checker recomputes the mathematical facts.
+The trusted basis consists of the geometric and algorithmic arguments above,
+the inspected implementations, Python integer semantics, and the execution
+platform. The finite graph diameter has the additional kernel-checked Lean
+certificate above; the geometric identification retains the stated trust boundary.
+
+\paragraph{Data and Software Availability.}
+The supplement contains source, census, edges, circuits, distance summaries,
+annotated witness, raw TOPCOM outputs, logs, and reproduction instructions.
+Run \texttt{python3 reproduce.py} to rebuild the primary certificate and
+symmetry checks. With Lean 4.24.0 installed, run
+\texttt{python3 tools/check\_lean.py} to rebuild the formal certificate.
+The table binding and two deliberate certificate-corruption checks are in
+\texttt{verify/check\_lean\_export.py} and
+\texttt{verify/lean\_negative\_checks.py}.
+Optional external comparisons are described in the README.
+The companion GitHub-ready source archive contains all files required for
+the independent numerical and Lean checks, together with a citation file and
+automated verification workflows. No repository URL or archival DOI has yet
+been assigned to this version.
+
+\paragraph{AI Assistance.}
+An OpenAI coding assistant was used to develop the code and manuscript,
+including both internal implementations and the Lean certificate. The
+implementation-independent checker is not an external human audit. The
+source, finite certificates and recorded verification logs are provided to
+support independent assessment.
+
+\clearpage
+\appendix
+\section{Explicit Diametral Endpoints}
+\input{witness.tex}
+
+\clearpage
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}

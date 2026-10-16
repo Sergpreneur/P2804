@@ -1,0 +1,17 @@
+{
+  "status": "VERIFIED",
+  "negative_checks": [
+    {
+      "case": "self_parent_edge",
+      "expected_rejection": true,
+      "returncode": 1,
+      "diagnostic": "/tmp/p2804-negative-tq859e1b/self_parent_edge.lean:3:42: error: Tactic `decide` proved that the proposition\n  Adj (vertex 1) (vertex 1)\nis false\n"
+    },
+    {
+      "case": "increased_potential",
+      "expected_rejection": true,
+      "returncode": 1,
+      "diagnostic": "/tmp/p2804-negative-tq859e1b/increased_potential.lean:4:70: error: Tactic `decide` proved that the proposition\n  corrupted (vertex 4174) \u2264 corrupted (vertex 3251) + 1\nis false\n"
+    }
+  ]
+}

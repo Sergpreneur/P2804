@@ -1,0 +1,8 @@
+{
+  "toolchain": "leanprover/lean4:v4.24.0",
+  "git_commit": "797c613eb9b6d4ec95db23e3e00af9ac6657f24b",
+  "distribution": "https://github.com/leanprover/lean4/releases/download/v4.24.0/lean-4.24.0-linux.tar.zst",
+  "distribution_sha256": "b14f5e5159219dd1a1956c3b806813319f5e94ccd5bdfd56f54520609a5bb5ec",
+  "scope": "Unmodified official distribution; only executable path discovery is supplied by the recorded preload shim",
+  "recorded_shim_source_sha256": "acd6bc79fd90c80561745fe0537d7add3459b57292cda60fb3762b667800d1d1"
+}

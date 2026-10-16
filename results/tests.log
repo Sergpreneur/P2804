@@ -1,0 +1,12 @@
+test_all_circuit_sides_cover_same_region (test_flips.CircuitsAndFlips.test_all_circuit_sides_cover_same_region) ... ok
+test_incompatible_radon_faces_rejected (test_flips.CircuitsAndFlips.test_incompatible_radon_faces_rejected) ... ok
+test_bad_edges_rejected (test_invariants.Invariants.test_bad_edges_rejected) ... ok
+test_full_census_has_21_simplices_each (test_invariants.Invariants.test_full_census_has_21_simplices_each) ... ok
+test_hull_and_invalid_triangulation_mutations (test_invariants.Invariants.test_hull_and_invalid_triangulation_mutations) ... ok
+test_vandermonde_against_bareiss (test_invariants.Invariants.test_vandermonde_against_bareiss) ... ok
+test_complete_small_graphs (test_small_cases.SmallCases.test_complete_small_graphs) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.175s
+
+OK

@@ -1,0 +1,61 @@
+{
+  "status": "VERIFIED",
+  "external_author": "Nicholas Williams",
+  "repository": "https://github.com/nchlswllms/hst-orders",
+  "commit": "278dd2ed9192def321d566bc9fd0779a46fc40a4",
+  "commit_author_date": "2020-10-11T22:07:04+01:00",
+  "source_file_sha256": "f47f7356099810f176ade77aa58ef8d4f9fadc2729cccdf19508e409648ae19a",
+  "extracted_functions": [
+    "even_dict_hst_1",
+    "inc_flips",
+    "intertwine",
+    "lower",
+    "non_lower",
+    "separated"
+  ],
+  "function_bodies_modified": false,
+  "execution": "AST-extracted unmodified functions with NumPy; unused Sage import omitted",
+  "native_sage_run": false,
+  "external_human_review": false,
+  "numpy_version": "2.3.5",
+  "scipy_version": "1.17.0",
+  "vertices": 4824,
+  "edges": 15120,
+  "diameter": 21,
+  "exact_vertex_set_equality": true,
+  "exact_edge_set_equality": true,
+  "full_distance_matrix_sha256": "c384c92a7ef367f11d8f08a27f5e7c6bbcc0d7b98c674c9689dbc451fee22a13",
+  "all_diametral_pairs": [
+    [
+      529,
+      4174
+    ],
+    [
+      639,
+      3642
+    ],
+    [
+      1049,
+      2825
+    ],
+    [
+      1162,
+      3352
+    ],
+    [
+      1639,
+      2511
+    ],
+    [
+      1962,
+      4013
+    ],
+    [
+      2206,
+      4307
+    ]
+  ],
+  "external_graph_seconds": 8.286548997999944,
+  "scipy_distances_seconds": 2.881747794999683,
+  "novelty_note": "This code made the graph computable in 2020; it does not contain or publish the numeric diameter 21."
+}

@@ -1,0 +1,57 @@
+Evaluating Commandline Options ...
+--nosymmetries       : ignoring symmetries activated
+ -v                  : verbose output activated
+... done.
+
+------------------------------------------------------------
+------------------ topcom VERSION 1.1.2 --------------------
+Triangulations of Point Configurations and Oriented Matroids
+--------------------- by Joerg Rambau ----------------------
+------------------------------------------------------------
+
+       -- using STL containers for hash tables --
+       -- using STL containers for symmetries  --
+       --    using STL containers for flips    --
+       -- using STL containers for chirotopes  --
+
+read point configuration with 10 points in rank 5
+preprocessing chirotope with 252 signs ...
+
+252 signs in total.
+... done.
+computing closure of 0 symmetries with 0 symmetry generators ...
+... found 0 symmetries without identity.
+no valid symmetry generators found.
+preprocessing simplex table sorted lexicographically for all full-dimensional simplices up to rank 6 ...
+... done.
+computing circuits ...
+210 circuits in total.
+... done.
+computing admissibles ...
+252 valid simplices.
+... done.
+no preprocessing of simplex-index symmetries and switch tables ...
+computing positive cocircuits ...
+35 cocircuits in total.
+... done.
+computing facets ...
+... done.
+computing incidences ...
+... done.
+generating root node with some preprocessing of symmetries ...
+exploring all symmetry classes of triangulations by extension ...
++ worker    0 | n:           10000 | ldead:             189 | edead:            4470 | sym:          748 | tot:             748 | progress [%]: [0,0,1,1,1,1,2,3,4,4,4,5,5,7,15,11,12,57]
++ worker    0 | n:           20000 | ldead:             341 | edead:            9204 | sym:         1378 | tot:            1378 | progress [%]: [0,2,1,2,3,3,6,7]
++ worker    0 | n:           30000 | ldead:             503 | edead:           13885 | sym:         2053 | tot:            2053 | progress [%]: [0,0,2,1,3,1,3,2,2,2,4,2,2,11,10,11,12,14,66]
++ worker    0 | n:           40000 | ldead:             654 | edead:           18563 | sym:         2695 | tot:            2695 | progress [%]: [1,0,0,1,1,1,1,6,7,3,5,6,6,7,7,16]
++ worker    0 | n:           50000 | ldead:             814 | edead:           23349 | sym:         3329 | tot:            3329 | progress [%]: [2,0,3,3,2,1,1,1,1,1,4,3,7,4,4,14,18,14,16]
++ worker    0 | n:           60000 | ldead:             985 | edead:           28053 | sym:         3950 | tot:            3950 | progress [%]: [2,2,1,1,2,2,2,2,5,3,12,6,6,12]
++ worker    0 | n:           70000 | ldead:            1129 | edead:           32685 | sym:         4620 | tot:            4620 | progress [%]: [2,2,2,2,1,0,1,1,2,2,5]
+*** master ***| n:           73258 | ldead:            1176 | edead:           34355 | sym:         4824 | tot:            4824
+73258 partial triangulations visited in total.
+1176 branching deadends.
+34355 early detected deadends.
+0 max iterations in coversimp tightening.
+4824 symmetry classes --- 4824 triangulations in total.
+4824 symmetry classes of triangulations in total.
+... done.

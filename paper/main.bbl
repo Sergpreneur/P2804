@@ -1,0 +1,66 @@
+\begin{thebibliography}{1}
+
+\bibitem{lean4}
+Leonardo de~Moura and Sebastian Ullrich.
+\newblock The {Lean 4} theorem prover and programming language.
+\newblock In {\em Automated Deduction -- CADE 28}, pages 625--635. Springer,
+  2021.
+\newblock \url{https://doi.org/10.1007/978-3-030-79876-5_37}.
+
+\bibitem{joswig}
+Michael Joswig and Lars Kastner.
+\newblock New counts for the number of triangulations of cyclic polytopes.
+\newblock In {\em Mathematical Software -- ICMS 2018}, volume 10931 of {\em
+  Lecture Notes in Computer Science}, pages 264--271. Springer, 2018.
+\newblock \url{https://doi.org/10.1007/978-3-319-96418-8_31}.
+
+\bibitem{rambau1997}
+J{\"o}rg Rambau.
+\newblock Triangulations of cyclic polytopes and higher {Bruhat} orders.
+\newblock {\em Mathematika}, 44:162--194, 1997.
+\newblock \url{https://doi.org/10.1112/S0025579300012055}.
+
+\bibitem{rambau2026}
+J{\"o}rg Rambau.
+\newblock Symmetric lexicographic symmetric-subset reverse search for the
+  enumeration of circuits, cocircuits, and triangulations up to symmetry.
+\newblock arXiv:2607.05967v2, 2026.
+\newblock \url{https://doi.org/10.48550/arXiv.2607.05967}.
+
+\bibitem{survey}
+J{\"o}rg Rambau and Victor Reiner.
+\newblock A survey of the higher {Stasheff--Tamari} orders.
+\newblock In {\em Associahedra, Tamari Lattices and Related Structures}, pages
+  351--390. Birkh{\"a}user, 2012.
+\newblock Author manuscript:
+  \url{https://epub.uni-bayreuth.de/id/eprint/257/1/rambau_reiner.pdf}.
+
+\bibitem{theoremdb}
+{TheoremDB}.
+\newblock {P2804}: Flip-graph diameter for triangulations of {C(10,4)}.
+\newblock \url{https://theoremdb.org/statements/P2804/}.
+\newblock Accessed 15 October 2026.
+
+\bibitem{williamscode}
+Nicholas Williams.
+\newblock {hst-orders}: higher {Stasheff--Tamari} orders.
+\newblock Source code, GPL-3.0, 2020.
+\newblock Commit 278dd2ed9192def321d566bc9fd0779a46fc40a4, 11 October 2020.
+  \url{https://github.com/nchlswllms/hst-orders}. Accessed 15 October 2026.
+
+\bibitem{williams}
+Nicholas~J. Williams.
+\newblock Quiver combinatorics and triangulations of cyclic polytopes.
+\newblock {\em Algebraic Combinatorics}, 6(3):639--660, 2023.
+\newblock \url{https://doi.org/10.5802/alco.280}.
+
+\bibitem{williamsiciam}
+Nicholas~James Williams.
+\newblock Triangulations of cyclic polytopes through the lens of
+  reconfiguration.
+\newblock ICIAM 2023, Minisymposium on Combinatorial Reconfiguration, 22 August
+  2023, 2023.
+\newblock Talk 04747, official abstract.
+  \url{https://iciam2023.org/registered_data?id=00324}.
+
+\end{thebibliography}

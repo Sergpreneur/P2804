@@ -1,0 +1,45 @@
+{
+  "status": "VERIFIED",
+  "group": "D_10 (order 20)",
+  "label_actions": "v -> (sign*(v-1)+shift) mod 10 + 1; sign=+/-1, shift=0..9",
+  "automorphisms_checked": 20,
+  "edges_checked_per_automorphism": 15120,
+  "diametral_pair_orbits": [
+    [
+      [
+        529,
+        4174
+      ],
+      [
+        1162,
+        3352
+      ]
+    ],
+    [
+      [
+        639,
+        3642
+      ],
+      [
+        1049,
+        2825
+      ],
+      [
+        1639,
+        2511
+      ],
+      [
+        1962,
+        4013
+      ],
+      [
+        2206,
+        4307
+      ]
+    ]
+  ],
+  "orbit_sizes": [
+    2,
+    5
+  ]
+}

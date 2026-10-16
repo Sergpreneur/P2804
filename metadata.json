@@ -1,0 +1,35 @@
+{
+  "title": "The diameter of the triangulation flip graph of C(10,4)",
+  "language": "English",
+  "article_type": "Short computational research note",
+  "keywords": [
+    "cyclic polytope",
+    "triangulation",
+    "bistellar flip",
+    "graph diameter",
+    "exact enumeration",
+    "computational certificate"
+  ],
+  "author_names": [
+    "Nefedov Sergey"
+  ],
+  "affiliations": [
+    "Moscow State University, Mathematics Department"
+  ],
+  "orcids": [],
+  "corresponding_author_email": null,
+  "contributions": null,
+  "funding": null,
+  "competing_interests": null,
+  "target_journal": null,
+  "archive_doi": null,
+  "manuscript_license": null,
+  "priority_check": "pending expert confirmation",
+  "formal_verification": {
+    "status": "VERIFIED",
+    "toolchain": "Lean 4.24.0",
+    "scope": "Explicit finite graph diameter only; geometry in paper and exact Python"
+  },
+  "submitted": false,
+  "release_date": "2026-10-16"
+}

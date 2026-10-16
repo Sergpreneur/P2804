@@ -1,0 +1,4 @@
+Independent determinant geometry prepared
+Independent lex enumeration matches: 357; {'nodes': 14869, 'seconds': 0.01939455399997314}
+{"status": "VERIFIED", "n": 9, "triangulations": 357, "nodes": 14869, "seconds": 0.01939455399997314}
+VERIFIED

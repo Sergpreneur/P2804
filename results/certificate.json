@@ -1,0 +1,29 @@
+{
+  "status": "COMPUTATIONALLY CERTIFIED",
+  "release": "1.0.0",
+  "date": "2026-10-16",
+  "author": "Nefedov Sergey",
+  "problem": "TheoremDB P2804: full labelled undirected flip graph of C(10,4)",
+  "claims": {
+    "vertices": 4824,
+    "edges": 15120,
+    "components": 1,
+    "diameter": 21,
+    "radius": 15,
+    "diametral_unordered_pairs": 7,
+    "diametral_pair_orbit_sizes": [
+      2,
+      5
+    ]
+  },
+  "exact_verification": "results/independent_verification.json",
+  "lean_verification": "results/lean_verification.json",
+  "lean_table_binding": "results/lean_export_verification.json",
+  "formal_scope": "Diameter of explicit Fixed.Adj on Fin 4824; geometry and enumeration completeness outside Lean",
+  "source_hash_binding": "All 42 module source hashes and corresponding compiler logs checked against recorded successful run when assembling this release",
+  "distance_matrix_sha256": "c384c92a7ef367f11d8f08a27f5e7c6bbcc0d7b98c674c9689dbc451fee22a13",
+  "priority": "No prior explicit value located in bounded search; priority not established",
+  "repository_url": null,
+  "doi": null,
+  "manifest": "MANIFEST.sha256 lists every release file except itself"
+}

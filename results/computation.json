@@ -1,0 +1,25 @@
+{
+  "status": "COMPUTATIONALLY CERTIFIED",
+  "vertices": 4824,
+  "edges": 15120,
+  "component_sizes": [
+    4824
+  ],
+  "diameters": [
+    21
+  ],
+  "degree_min": 5,
+  "degree_max": 10,
+  "degree_sum": 30240,
+  "degree_histogram": {
+    "5": 954,
+    "6": 2180,
+    "7": 1210,
+    "8": 410,
+    "9": 60,
+    "10": 10
+  },
+  "distance_matrix_sha256": "c384c92a7ef367f11d8f08a27f5e7c6bbcc0d7b98c674c9689dbc451fee22a13",
+  "bfs_seconds": 8.79593871499992,
+  "total_seconds": 9.243797418000213
+}

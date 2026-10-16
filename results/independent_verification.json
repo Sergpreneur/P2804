@@ -1,0 +1,69 @@
+{
+  "status": "VERIFIED",
+  "n": 10,
+  "triangulations": 4824,
+  "edges": 15120,
+  "component_sizes": [
+    4824
+  ],
+  "diameters": [
+    21
+  ],
+  "enumeration": {
+    "nodes": 248097,
+    "seconds": 0.348715105999986
+  },
+  "hull_normalized_volume": 2737152,
+  "boundary_facets": 35,
+  "distance_matrix_sha256": "c384c92a7ef367f11d8f08a27f5e7c6bbcc0d7b98c674c9689dbc451fee22a13",
+  "all_diametral_pairs": [
+    [
+      529,
+      4174
+    ],
+    [
+      639,
+      3642
+    ],
+    [
+      1049,
+      2825
+    ],
+    [
+      1162,
+      3352
+    ],
+    [
+      1639,
+      2511
+    ],
+    [
+      1962,
+      4013
+    ],
+    [
+      2206,
+      4307
+    ]
+  ],
+  "bitset_distances_seconds": 31.288145080999925,
+  "total_seconds": 32.8414488410001,
+  "uses_src_modules": false,
+  "checks": [
+    "determinants",
+    "canonicalization",
+    "unique hashes",
+    "proper simplex intersections",
+    "exact hull coverage",
+    "facet incidences",
+    "independent exhaustive lexicographic enumeration",
+    "all circuit flips",
+    "independent internal-triangle exchange adjacency",
+    "complete edge-list equality",
+    "all-pairs bitset distances",
+    "eccentricities",
+    "distance histogram",
+    "diametral witness and flip path",
+    "index reversal automorphism and layer sizes"
+  ]
+}
